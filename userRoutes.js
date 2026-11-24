@@ -74,7 +74,11 @@ router.post("/login", async (req, res) => {
         );
 
         res.status(200).json({
-            access: accessToken
+            access: accessToken,
+            user: {
+                email: user.email,
+                isAdmin: user.isAdmin
+            }
         });
 
     } catch (error) {

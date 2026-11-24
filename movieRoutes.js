@@ -31,7 +31,7 @@ router.post("/addMovie", auth, adminOnly, async (req, res) => {
 
 
 // GET ALL MOVIES
-router.get("/getMovies", auth, async (req, res) => {
+router.get("/getMovies", async (req, res) => {
     try {
         const movies = await Movie.find()
             .populate("comments.userId", "email");
@@ -129,7 +129,7 @@ router.delete("/deleteMovie/:id", auth, adminOnly, async (req, res) => {
 
 
 // ADD COMMENT
-router.patch("/addComment/:id", auth, async (req, res) => {
+router.post("/addComment/:id", auth, async (req, res) => {
     try {
         const { comment } = req.body;
 
@@ -167,7 +167,7 @@ router.patch("/addComment/:id", auth, async (req, res) => {
 
 
 // GET MOVIE COMMENTS
-router.get("/getComments/:id", auth, async (req, res) => {
+router.get("/getMovies", async (req, res) => {
     try {
         const movie = await Movie.findById(req.params.id)
             .populate("comments.userId", "email");
